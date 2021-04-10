@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="240" height="70" viewBox="0 0 200 70">
+  <defs>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500|family=Playfair+Display:wght@400;700|display=swap');
+
+      .cls-1 {
+        fill: #11204d;
+        font: bold 64px Playfair Display;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #1dc8cc;
+        filter: url(#filter);
+      }
+
+      .cls-3 {
+        fill: #1dc8cc;
+        filter: url(#filter-2);
+      }
+    </style>
+  </defs>
+  <text id="miver" x="-20" y="60" class="cls-1">Sushant.</text>
+  <path class="cls-2" d="M34.5,11.006L0.008,70.994H68.992L34.5,11.006"/>
+  <path class="cls-3" d="M43.008,10.993h68.984L77.5,71,43.008,10.993m55.226,7.993H56.767L77.5,55.057l20.733-36.07"/>
+</svg>

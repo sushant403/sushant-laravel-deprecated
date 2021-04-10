@@ -1,0 +1,61 @@
+{
+    "menu": [
+        {
+            "url": "sushant",
+            "slug": "sushant",
+            "name": "Home",
+            "icon": "home"
+        },
+        {
+            "name": "Admin Profile",
+            "icon": "mail",
+            "slug": "",
+            "badge": "2",
+            "badgeClass": "badge badge-pill badge-light-danger ml-auto mr-1",
+            "submenu": [
+                {
+                    "url": "sushant/profile",
+                    "slug": "sushant/profile*",
+                    "name": "Profile Information",
+                    "icon": "circle"
+                },
+                {
+                    "url": "user/profile",
+                    "slug": "user/profile",
+                    "name": "Jet Dashboard",
+                    "icon": "circle"
+                }
+            ]
+        },
+        {
+            "url": "sushant/contact",
+            "slug": "sushant/contact",
+            "name": "Contacts Requests",
+            "icon": "users"
+        },
+        {
+            "url": "sushant/frontend",
+            "slug": "sushant/frontend",
+            "name": "Frontend Info.",
+            "icon": "airplay"
+        },
+        {
+            "url": "sushant/resume",
+            "slug": "sushant/resume",
+            "name": "My Resumes",
+            "icon": "hash"
+        },
+        {
+            "url": "sushant/portfolio",
+            "slug": "sushant/portfolio",
+            "name": "My Portfolios",
+            "icon": "truck"
+        },
+        {
+            "url": "sushant/service",
+            "slug": "sushant/service",
+            "name": "My Service Offers",
+            "icon": "coffee"
+        }
+    ]
+}
