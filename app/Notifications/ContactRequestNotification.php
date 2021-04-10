@@ -53,7 +53,7 @@ class ContactRequestNotification extends Notification
             ->line('Subject: ' . $this->subject)
             ->line('Message: ' . $this->message)
             ->line('That is it for now. Peace.')
-            ->action('Goto your Panel', route('admin.index'));
+            ->action('Goto your Panel', route('sushant.index'));
     }
 
     /**
