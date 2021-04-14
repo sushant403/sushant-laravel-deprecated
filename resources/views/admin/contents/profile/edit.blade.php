@@ -67,8 +67,8 @@
           </div>
           <!-- users edit media object ends -->
           <!-- users edit account form start -->
-          <form class="form-validate" enctype="multipart/form-data"
-            action="{{ route('sushant.profile.update', auth()->user()->id) }}" method="POST">
+          <form action="{{ route("sushant.profile.update", [$profile->id]) }}" method="POST" class="jquery-val-form"
+            enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="row">
@@ -76,30 +76,29 @@
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input type="text" class="form-control" placeholder="Username"
-                    value="{{ old('name', auth()->user()->name) }}" id="username" />
+                    value="{{ old('name', $profile->name) }}" id="username" />
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" placeholder="Name"
-                    value="{{ old('name', auth()->user()->name) }}" name="name" id="name" />
+                  <input type="text" class="form-control" placeholder="Name" value="{{ old('name', $profile->name) }}"
+                    name="name" id="name" />
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="email">E-mail</label>
                   <input type="email" class="form-control" placeholder="Email"
-                    value="{{ old('email', auth()->user()->email) }}" name="email" id="email" />
+                    value="{{ old('email', $profile->email) }}" name="email" id="email" />
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="status">Status</label>
-                  <select class="form-control" id="status">
-                    <option>Active</option>
-                    <option>Blocked</option>
-                    <option>Deactivated</option>
+                  <select class="form-control" name="is_dark_mode" id="status">
+                    <option value="0">Light</option>
+                    <option value="1">Dark</option>
                   </select>
                 </div>
               </div>
@@ -120,162 +119,7 @@
                     id="company" />
                 </div>
               </div>
-              <div class="col-12">
-                <div class="table-responsive border rounded mt-1">
-                  <h6 class="py-1 mx-1 mb-0 font-medium-2">
-                    <i data-feather="lock" class="font-medium-3 mr-25"></i>
-                    <span class="align-middle">Permission</span>
-                  </h6>
-                  <table class="table table-striped table-borderless">
-                    <thead class="thead-light">
-                      <tr>
-                        <th>Module</th>
-                        <th>Read</th>
-                        <th>Write</th>
-                        <th>Create</th>
-                        <th>Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Admin</td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="admin-read" checked />
-                            <label class="custom-control-label" for="admin-read"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="admin-write" />
-                            <label class="custom-control-label" for="admin-write"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="admin-create" />
-                            <label class="custom-control-label" for="admin-create"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="admin-delete" />
-                            <label class="custom-control-label" for="admin-delete"></label>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Staff</td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="staff-read" />
-                            <label class="custom-control-label" for="staff-read"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="staff-write" checked />
-                            <label class="custom-control-label" for="staff-write"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="staff-create" />
-                            <label class="custom-control-label" for="staff-create"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="staff-delete" />
-                            <label class="custom-control-label" for="staff-delete"></label>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Author</td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="author-read" checked />
-                            <label class="custom-control-label" for="author-read"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="author-write" />
-                            <label class="custom-control-label" for="author-write"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="author-create" checked />
-                            <label class="custom-control-label" for="author-create"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="author-delete" />
-                            <label class="custom-control-label" for="author-delete"></label>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Contributor</td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="contributor-read" />
-                            <label class="custom-control-label" for="contributor-read"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="contributor-write" />
-                            <label class="custom-control-label" for="contributor-write"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="contributor-create" />
-                            <label class="custom-control-label" for="contributor-create"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="contributor-delete" />
-                            <label class="custom-control-label" for="contributor-delete"></label>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>User</td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="user-read" />
-                            <label class="custom-control-label" for="user-read"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="user-create" />
-                            <label class="custom-control-label" for="user-create"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="user-write" />
-                            <label class="custom-control-label" for="user-write"></label>
-                          </div>
-                        </td>
-                        <td>
-                          <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="user-delete" checked />
-                            <label class="custom-control-label" for="user-delete"></label>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+
               <div class="col-12 d-flex flex-sm-row flex-column mt-2">
                 <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Save
                   Changes</button>
@@ -290,8 +134,8 @@
         <!-- Information Tab starts -->
         <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
           <!-- users edit Info form start -->
-          <form class="form-validate" enctype="multipart/form-data"
-            action="{{ route('sushant.profile.update', auth()->user()->id) }}" method="POST">
+          <form method="POST" class="form-validate" enctype="multipart/form-data"
+            action="{{ route("sushant.profile.update", [$profile->id]) }}">
             <div class="row mt-1">
               <div class="col-12">
                 <h4 class="mb-1">
@@ -420,7 +264,7 @@
         <div class="tab-pane" id="social" aria-labelledby="social-tab" role="tabpanel">
           <!-- users edit social form start -->
           <form class="form-validate" enctype="multipart/form-data"
-            action="{{ route('sushant.profile.update', auth()->user()->id) }}" method="POST">
+            action="{{ route("sushant.profile.update", [$profile->id]) }}" method="POST">
             <div class="row">
               <div class="col-lg-4 col-md-6 form-group">
                 <label for="twitter-input">Twitter</label>

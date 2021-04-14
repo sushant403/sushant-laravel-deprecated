@@ -7,6 +7,10 @@
             "icon": "home"
         },
         {
+            "navheader": "Account",
+            "slug": ""
+        },
+        {
             "name": "Admin Profile",
             "icon": "mail",
             "slug": "",
@@ -28,16 +32,18 @@
             ]
         },
         {
+            "navheader": "Contact and Requests",
+            "slug": ""
+        },
+        {
             "url": "sushant/contact",
             "slug": "sushant/contact",
-            "name": "Contacts Requests",
+            "name": "Contacts",
             "icon": "users"
         },
         {
-            "url": "sushant/frontend",
-            "slug": "sushant/frontend",
-            "name": "Frontend Info.",
-            "icon": "airplay"
+            "navheader": "Data Changes",
+            "slug": ""
         },
         {
             "url": "sushant/resume",
@@ -56,6 +62,22 @@
             "slug": "sushant/service",
             "name": "My Service Offers",
             "icon": "coffee"
+        },
+        {
+            "url": "sushant/settings",
+            "slug": "sushant/settings",
+            "name": "My Account Settings",
+            "icon": "settings"
+        },
+        {
+            "navheader": "SEO and Meta Tags",
+            "slug": ""
+        },
+        {
+            "url": "sushant/frontend",
+            "slug": "sushant/frontend",
+            "name": "Frontend Info.",
+            "icon": "airplay"
         }
     ]
 }

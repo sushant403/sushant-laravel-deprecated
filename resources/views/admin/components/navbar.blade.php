@@ -5,11 +5,28 @@
         <li class="nav-item"><a class="nav-link menu-toggle" href="javascript:void(0);"><i class="ficon"
               data-feather="menu"></i></a></li>
       </ul>
+      <ul class="nav navbar-nav bookmark-icons">
+        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{url('app/email')}}" data-toggle="tooltip"
+            data-placement="top" title="Email"><i class="ficon" data-feather="mail"></i></a></li>
+        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{url('app/chat')}}" data-toggle="tooltip"
+            data-placement="top" title="Chat"><i class="ficon" data-feather="message-square"></i></a></li>
+        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{url('app/calendar')}}" data-toggle="tooltip"
+            data-placement="top" title="Calendar"><i class="ficon" data-feather="calendar"></i></a></li>
+        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="{{url('app/todo')}}" data-toggle="tooltip"
+            data-placement="top" title="Todo"><i class="ficon" data-feather="check-square"></i></a></li>
+      </ul>
       <ul class="nav navbar-nav">
         <li class="nav-item d-none d-lg-block">
-          <a class="nav-link nav-link-style">
-            <i class="ficon" data-feather="sun"></i>
+          <a class="nav-link bookmark-star">
+            <i class="ficon text-warning" data-feather="star"></i>
           </a>
+          <div class="bookmark-input search-input">
+            <div class="bookmark-input-icon">
+              <i data-feather="search"></i>
+            </div>
+            <input class="form-control input" type="text" placeholder="Bookmark" tabindex="0" data-search="search">
+            <ul class="search-list search-list-bookmark"></ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -24,16 +41,69 @@
           <a class="dropdown-item" href="{{url('lang/en')}}" data-language="en">
             <i class="flag-icon flag-icon-us"></i> English
           </a>
-          <a class="dropdown-item" href="{{url('lang/fr')}}" data-language="fr">
-            <i class="flag-icon flag-icon-fr"></i> French
-          </a>
-          <a class="dropdown-item" href="{{url('lang/de')}}" data-language="de">
-            <i class="flag-icon flag-icon-de"></i> German
-          </a>
-          <a class="dropdown-item" href="{{url('lang/pt')}}" data-language="pt">
-            <i class="flag-icon flag-icon-pt"></i> Portuguese
-          </a>
         </div>
+      </li>
+      <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon"
+            data-feather="{{  auth()->user()->is_dark_mode == 1 ? 'sun' : 'moon' }}"></i></a>
+      </li>
+      <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon"
+            data-feather="search"></i></a>
+        <div class="search-input">
+          <div class="search-input-icon"><i data-feather="search"></i></div>
+          <input class="form-control input" type="text" placeholder="Explore Vuexy..." tabindex="-1"
+            data-search="search">
+          <div class="search-input-close"><i data-feather="x"></i></div>
+          <ul class="search-list search-list-main"></ul>
+        </div>
+      </li>
+      <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link" href="javascript:void(0);"
+          data-toggle="dropdown"><i class="ficon" data-feather="bell"></i><span
+            class="badge badge-pill badge-danger badge-up">5</span></a>
+        <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+          <li class="dropdown-menu-header">
+            <div class="dropdown-header d-flex">
+              <h4 class="notification-title mb-0 mr-auto">Notifications</h4>
+              <div class="badge badge-pill badge-light-primary">2 New</div>
+            </div>
+          </li>
+          <li class="scrollable-container media-list">
+            <a class="d-flex" href="javascript:void(0)">
+              <div class="media d-flex align-items-start">
+                <div class="media-left">
+                  <div class="avatar"><img src="{{ auth()->user()->profile_photo_url }}" alt="avatar" width="32"
+                      height="32"></div>
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><span class="font-weight-bolder">Congratulation {{ Auth::user()->name }}
+                      🎉</span>winner!</p>
+                  <small class="notification-text"> Won the monthly best seller badge.</small>
+                </div>
+              </div>
+            </a>
+            <div class="media d-flex align-items-center">
+              <h6 class="font-weight-bolder mr-auto mb-0">System Notifications</h6>
+              <div class="custom-control custom-control-primary custom-switch">
+                <input class="custom-control-input" id="systemNotification" type="checkbox" checked="">
+                <label class="custom-control-label" for="systemNotification"></label>
+              </div>
+            </div>
+            <a class="d-flex" href="javascript:void(0)">
+              <div class="media d-flex align-items-start">
+                <div class="media-left">
+                  <div class="avatar bg-light-warning">
+                    <div class="avatar-content"><i class="avatar-icon" data-feather="alert-triangle"></i></div>
+                  </div>
+                </div>
+                <div class="media-body">
+                  <p class="media-heading"><span class="font-weight-bolder">High memory</span>&nbsp;usage</p><small
+                    class="notification-text"> BLR Server using high memory</small>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="dropdown-menu-footer"><a class="btn btn-primary btn-block" href="javascript:void(0)">Read all
+              notifications</a></li>
+        </ul>
       </li>
       <li class="nav-item dropdown dropdown-user">
         <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);"
@@ -48,18 +118,18 @@
           </span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
-          <a class="dropdown-item" href="{{ route('profile.show') }}">
+          <a class="dropdown-item" href="{{route('profile.show')}}">
             <i class="mr-50" data-feather="user"></i> Profile
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="javascript:void(0)">
+          <a class="dropdown-item" href="{{url('page/account-settings')}}">
             <i class="mr-50" data-feather="settings"></i> Settings
           </a>
-          <a class="dropdown-item" href="javascript:void(0)">
+          <a class="dropdown-item" href="{{url('page/faq')}}">
             <i class="mr-50" data-feather="help-circle"></i> FAQ
           </a>
-          <a href="javascript:void(0)" onclick="event.preventDefault(); document.getElementById('logoutform').submit();"
-            class="dropdown-item">
+          <a class="dropdown-item" href="javascript:()"
+            onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
             <i class="mr-50" data-feather="power"></i> Logout
           </a>
         </div>
@@ -73,6 +143,11 @@
   <li class="d-flex align-items-center">
     <a href="javascript:void(0);">
       <h6 class="section-label mt-75 mb-0">Files</h6>
+    </a>
+  </li>
+  <li class="d-flex align-items-center">
+    <a href="javascript:void(0);">
+      <h6 class="section-label mt-75 mb-0">Users</h6>
     </a>
   </li>
 </ul>

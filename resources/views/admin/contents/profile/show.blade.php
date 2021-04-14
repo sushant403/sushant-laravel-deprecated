@@ -2,11 +2,6 @@
 
 @section('title', 'User View')
 
-@section('vendor-style')
-<link rel="stylesheet" href="{{asset('admin-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css')}}">
-<link rel="stylesheet" href="{{asset('admin-assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css')}}">
-<link rel="stylesheet" href="{{asset('admin-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css')}}">
-@endsection
 @section('page-style')
 {{-- Page Css files --}}
 <link rel="stylesheet" href="{{ asset('admin-assets/css/base/pages/app-invoice-list.css') }}">
@@ -25,12 +20,12 @@
             <div class="col-xl-6 col-lg-12 d-flex flex-column justify-content-between border-container-lg">
               <div class="user-avatar-section">
                 <div class="d-flex justify-content-start">
-                  <img class="img-fluid rounded" src="{{ Auth::user()->profile_photo_url }}" height="104" width="104"
+                  <img class="img-fluid rounded" src="{{ $profile->profile_photo_url }}" height="104" width="104"
                     alt="User avatar" />
                   <div class="d-flex flex-column ml-1">
                     <div class="user-info mb-1">
-                      <h4 class="mb-0">{{ Auth::user()->name }}</h4>
-                      <span class="card-text">{{ Auth::user()->email }}</span>
+                      <h4 class="mb-0">{{ $profile->name }}</h4>
+                      <span class="card-text">{{ $profile->email }}</span>
                     </div>
                     <div class="d-flex flex-wrap">
                       <a href="{{route('sushant.profile.edit', auth()->user()->id)}}" class="btn btn-primary">Edit</a>
@@ -48,7 +43,7 @@
                     <i data-feather="user" class="mr-1"></i>
                     <span class="card-text user-info-title font-weight-bold mb-0">Username</span>
                   </div>
-                  <p class="card-text mb-0">{{ Auth::user()->name }}</p>
+                  <p class="card-text mb-0">{{ $profile->name }}</p>
                 </div>
                 <div class="d-flex flex-wrap my-50">
                   <div class="user-info-title">
@@ -69,14 +64,14 @@
                     <i data-feather="flag" class="mr-1"></i>
                     <span class="card-text user-info-title font-weight-bold mb-0">Location</span>
                   </div>
-                  <p class="card-text mb-0">{{ Auth::user()->about->first()->location }}</p>
+                  <p class="card-text mb-0">{{ $profile->about->location }}</p>
                 </div>
                 <div class="d-flex flex-wrap">
                   <div class="user-info-title">
                     <i data-feather="phone" class="mr-1"></i>
                     <span class="card-text user-info-title font-weight-bold mb-0">Contact</span>
                   </div>
-                  <p class="card-text mb-0">{{ Auth::user()->about->first()->phone }}</p>
+                  <p class="card-text mb-0">{{ $profile->about->phone }}</p>
                 </div>
               </div>
             </div>
@@ -253,16 +248,6 @@
     </div>
     <!-- User Timeline & Permissions Ends -->
 </section>
-@endsection
-
-@section('vendor-script')
-<script src="{{asset('admin-assets/vendors/js/extensions/moment.min.js')}}"></script>
-<script src="{{asset('admin-assets/vendors/js/tables/datatable/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('admin-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('admin-assets/vendors/js/tables/datatable/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('admin-assets/vendors/js/tables/datatable/responsive.bootstrap4.js')}}"></script>
-<script src="{{asset('admin-assets/vendors/js/tables/datatable/datatables.buttons.min.js')}}"></script>
-<script src="{{asset('admin-assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js')}}"></script>
 @endsection
 @section('page-script')
 {{-- Page js files --}}

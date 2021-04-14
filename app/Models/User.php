@@ -73,26 +73,26 @@ class User extends Authenticatable
 
     public function about()
     {
-        return $this->hasMany(About::class);
+        return $this->hasMany(About::class, 'user_id', 'id');
     }
 
     public function frontend()
     {
-        return $this->hasMany(Frontend::class);
+        return $this->hasMany(Frontend::class, 'user_id', 'id');
     }
 
     public function resume()
     {
-        return $this->hasMany(Resume::class);
+        return $this->hasMany(Resume::class, 'user_id', 'id');
     }
 
     public function portfolio()
     {
-        return $this->hasMany(Portfolio::class);
+        return $this->hasMany(Portfolio::class, 'user_id', 'id');
     }
 
     public function service()
     {
-        return $this->hasMany(Service::class);
+        return $this->hasMany(Service::class, 'user_id', 'id');
     }
 }

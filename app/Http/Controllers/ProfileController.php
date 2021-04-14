@@ -15,37 +15,36 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('admin.contents.profile.show');
+        $users = User::all();
+        return view('admin.contents.profile.index', compact('users'));
     }
 
     public function create()
     {
-        return view('admin.contents.profile.create', compact('roles'));
+        return view('admin.contents.profile.create');
     }
 
     public function store(Request $request)
     {
         $user = User::create($request->all());
-        return redirect()->route('admin.profile.show');
+        return redirect()->route('sushant.profile.show');
     }
 
-    public function edit(User $user)
+    public function edit(User $profile)
     {
-        return view('admin.contents.profile.edit', compact('user'));
+        return view('admin.contents.profile.edit', compact('profile'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $profile)
     {
-        $user->update($request->all());
+        $profile->update($request->all());
 
-        return redirect()->route('admin.profile.show');
+        return redirect()->route('sushant.profile.index');
     }
 
-    public function show(User $user)
+    public function show(User $profile)
     {
-        $user->load('roles');
-
-        return view('admin.contents.profile.show', compact('user'));
+        return view('admin.contents.profile.show', compact('profile'));
     }
 
     public function destroy(User $user)

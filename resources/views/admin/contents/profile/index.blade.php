@@ -2,13 +2,6 @@
 
 @section('title', 'User List')
 
-@section('vendor-style')
-{{-- Page Css files --}}
-<link rel="stylesheet" href="{{ asset('admin-assets/vendors/css/tables/datatable/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('admin-assets/vendors/css/tables/datatable/responsive.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('admin-assets/vendors/css/tables/datatable/buttons.bootstrap4.min.css') }}">
-@endsection
-
 @section('page-style')
 {{-- Page Css files --}}
 <link rel="stylesheet" href="{{ asset('admin-assets/css/base/plugins/forms/form-validation.css') }}">
@@ -16,54 +9,130 @@
 @endsection
 
 @section('content')
-<!-- users list start -->
-<section class="app-user-list">
-  <!-- users filter start -->
-  <div class="card">
-    <h5 class="card-header">Search Filter</h5>
-    <div class="d-flex justify-content-between align-items-center mx-50 row pt-0 pb-2">
-      <div class="col-md-4 user_role"></div>
-      <div class="col-md-4 user_plan"></div>
-      <div class="col-md-4 user_status"></div>
+<!-- Basic table -->
+<section id="basic-datatable">
+    <div class="row">
+        <div class="col-12">
+            <a href="{{ route('sushant.profile.create') }}" class="btn btn-primary mb-1">Add New Record</a>
+            <div class="card">
+                <table class="datatables-basic table datatable-data">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Joined At</th>
+                            <th>Dark Mode Fan?</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($users as $user)
+                        <tr data-entry-id="{{ $user->id }}">
+                            <td></td>
+                            <td></td>
+                            <td>{{ $user->id ?? '' }}</td>
+                            <td>
+                                {{ $user->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->email ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->created_at->diffForHumans() ?? '' }}
+                            </td>
+                            <td>
+                                {{ $user->is_dark_mode ? $user->is_dark_mode === 1 ? 'Dark' : 'Light' : 'Light' }}
+                            </td>
+                            <td>
+                                <div class="d-inline-flex">
+                                    <a class="pr-1 dropdown-toggle hide-arrow text-primary" data-toggle="dropdown">
+                                        <i data-feather='more-vertical'></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="{{ route('sushant.profile.show', $user->id) }}" class="dropdown-item">
+                                            <i data-feather="edit" class="font-small-4 mr-50"></i>
+                                            Details</a>
+                                        <form action="{{ route('sushant.profile.destroy', $user->id) }}" method="POST"
+                                            onsubmit="return confirm(\'Are you Sure?\');"
+                                            style="display: inline-block;">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <button type="submit" class="dropdown-item delete-record">
+                                                <i data-feather="trash-2" class="font-small-4 mr-50"></i>
+                                                'Delete</button>
+                                    </div>
+                                </div>
+                                <a href="{{ route('sushant.profile.edit', $user->id) }}" class="item-edit">
+                                    <i data-feather='edit'></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
-  <!-- users filter end -->
-  <!-- list section start -->
-  <div class="card">
-    <div class="card-datatable table-responsive pt-0">
-      <table class="user-list-table table">
-        <thead class="thead-light">
-          <tr>
-            <th></th>
-            <th>User</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Plan</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-      </table>
-    </div>
-    @include('admin.contents.profile.create-modal')
-  </div>
-  <!-- list section end -->
 </section>
-<!-- users list ends -->
-@endsection
-
-@section('vendor-script')
-{{-- Vendor js files --}}
-<script src="{{ asset('admin-assets/vendors/js/tables/datatable/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('admin-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('admin-assets/vendors/js/tables/datatable/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('admin-assets/vendors/js/tables/datatable/responsive.bootstrap4.js') }}"></script>
-<script src="{{ asset('admin-assets/vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
-<script src="{{ asset('admin-assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('admin-assets/vendors/js/forms/validation/jquery.validate.min.js') }}"></script>
+<!--/ Basic table -->
 @endsection
 
 @section('page-script')
-{{-- Page js files --}}
-<script src="{{ asset('admin-assets/js/scripts/pages/app-user-list.js') }}"></script>
+@parent
+<script>
+    $(function () {
+    "use strict";
+    var e = $(".datatables-basic"),
+        a = $(".dt-date"),
+        t = $(".dt-complex-header"),
+        s = $(".dt-row-grouping"),
+        l = $(".dt-multilingual"),
+        r = "../../../app-assets/";
+    if (
+        ("laravel" === $("body").attr("data-framework") &&
+            (r = $("body").attr("data-asset-path")),
+        e.length)
+    ) {
+        var o = e.DataTable({
+            columnDefs: [
+                {
+                    className: "control",
+                    orderable: !1,
+                    responsivePriority: 2,
+                    targets: 0,
+                },
+                {
+                    targets: 1,
+                    visibe: false,
+                    orderable: !1,
+                    responsivePriority: 3,
+                    render: function (e, a, t, s) {
+                        return (
+                            '<div class="custom-control custom-checkbox"> <input class="custom-control-input dt-checkboxes" type="checkbox" value="" id="checkbox' +
+                            e +
+                            '" /><label class="custom-control-label" for="checkbox' +
+                            e +
+                            '"></label></div>'
+                        );
+                    },
+                    checkboxes: {
+                        selectAllRender:
+                            '<div class="custom-control custom-checkbox"> <input class="custom-control-input" type="checkbox" value="" id="checkboxSelectAll" /><label class="custom-control-label" for="checkboxSelectAll"></label></div>',
+                    },
+                },
+                { targets: 2, visible: !1 },
+                { responsivePriority: 1, targets: 4 },
+            ],
+            order: [[2, "desc"]],
+            @include('admin.components.datatables.add-scripts'),
+        });
+        $("div.head-label").html(
+            '<h6 class="mb-0">Users Information</h6>'
+        );
+    }
+  });
+</script>
 @endsection

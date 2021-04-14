@@ -10,9 +10,9 @@
                     <span class="font-weight-500">Sushant</span></p>
                 <div class="spacer-20"></div>
                 <h3 class="dtr-mb-5 color-blue">Full Stack Developer</h3>
-                <h3 class="dtr-mb-5 color-blue opacity-1">Web Designer</h3>
                 <h3><span class="dtr-animated-headline push"> <span class="dtr-words-wrapper">
-                            <b class="is-visible"><span class="color-blue opacity-2">Laravel</span></b>
+                            <b class="is-visible"><span class="color-blue opacity-2">Web Designer</span></b>
+                            <b class="is-hidden"><span class="color-blue opacity-2">Laravel | PHP</span></b>
                             <b class="is-hidden"><span class="color-blue opacity-2">Database</span></b>
                             <b class="is-hidden"><span class="color-blue opacity-2">Traveller</span></b>
 
