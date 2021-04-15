@@ -64,14 +64,14 @@
                     <i data-feather="flag" class="mr-1"></i>
                     <span class="card-text user-info-title font-weight-bold mb-0">Location</span>
                   </div>
-                  <p class="card-text mb-0">{{ $about->location }}</p>
+                  <p class="card-text mb-0">{{ $profile->about->location }}</p>
                 </div>
                 <div class="d-flex flex-wrap">
                   <div class="user-info-title">
                     <i data-feather="phone" class="mr-1"></i>
                     <span class="card-text user-info-title font-weight-bold mb-0">Contact</span>
                   </div>
-                  <p class="card-text mb-0">{{ $about->phone }}</p>
+                  <p class="card-text mb-0">{{ $profile->about->phone }}</p>
                 </div>
               </div>
             </div>

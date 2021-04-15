@@ -30,6 +30,25 @@
         </li>
       </ul>
     </div>
+    <ul class="nav navbar-nav align-items-center mx-auto">
+      <li class="nav-item d-none d-lg-block">
+        <span class="nav-link h5">
+          <script type="text/javascript">
+            var day = new Date();
+        var hr = day.getHours();
+        if (hr >= 0 && hr < 12) {
+            document.write("Good Morning!");
+        } else if (hr == 12) {
+            document.write("Good Noon!");
+        } else if (hr >= 12 && hr <= 16) {
+            document.write("Good Afternoon!");
+        } else {
+            document.write("Good Evening!");
+        }
+          </script>
+        </span class="nav-link h5">
+      </li>
+    </ul>
     <ul class="nav navbar-nav align-items-center ml-auto">
       <li class="nav-item dropdown dropdown-language">
         <a class="nav-link dropdown-toggle" id="dropdown-flag" href="javascript:void(0);" data-toggle="dropdown"

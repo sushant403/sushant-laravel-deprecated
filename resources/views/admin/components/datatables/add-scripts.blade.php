@@ -69,33 +69,4 @@ dom:
                     },
                 },
             ],
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.modal({
-                        header: function (e) {
-                            return "Details of " + "{{ $user->name }}";
-                        },
-                    }),
-                    type: "column",
-                    renderer: function (e, a, t) {
-                        var s = $.map(t, function (e, a) {
-                            return (
-                                console.log(t),
-                                "" !== e.title
-                                    ? '<tr data-dt-row="' +
-                                      e.rowIndex +
-                                      '" data-dt-column="' +
-                                      e.columnIndex +
-                                      '"><td>' +
-                                      e.title +
-                                      ":</td> <td>" +
-                                      e.data +
-                                      "</td></tr>"
-                                    : ""
-                            );
-                        }).join("");
-                        return !!s && $('<table class="table"/>').append(s);
-                    },
-                },
-            },
             language: { paginate: { previous: "&nbsp;", next: "&nbsp;" } }

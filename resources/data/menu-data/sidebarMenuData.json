@@ -18,14 +18,14 @@
             "badgeClass": "badge badge-pill badge-light-danger ml-auto mr-1",
             "submenu": [
                 {
-                    "url": "sushant/profile",
-                    "slug": "sushant/profile*",
-                    "name": "Profile Information",
-                    "icon": "circle"
+                    "url": "sushant/myprofile",
+                    "slug": "sushant/myprofile*",
+                    "name": "Profile Settings",
+                    "icon": "cpu"
                 },
                 {
                     "url": "user/profile",
-                    "slug": "user/profile",
+                    "slug": "user/profile*",
                     "name": "Jet Dashboard",
                     "icon": "circle"
                 }
@@ -37,8 +37,14 @@
         },
         {
             "url": "sushant/contact",
-            "slug": "sushant/contact",
+            "slug": "sushant/contact*",
             "name": "Contacts",
+            "icon": "activity"
+        },
+        {
+            "url": "sushant/profile",
+            "slug": "sushant/profile*",
+            "name": "All Users Info.",
             "icon": "users"
         },
         {
@@ -47,25 +53,25 @@
         },
         {
             "url": "sushant/resume",
-            "slug": "sushant/resume",
+            "slug": "sushant/resume*",
             "name": "My Resumes",
             "icon": "hash"
         },
         {
             "url": "sushant/portfolio",
-            "slug": "sushant/portfolio",
+            "slug": "sushant/portfolio*",
             "name": "My Portfolios",
             "icon": "truck"
         },
         {
             "url": "sushant/service",
-            "slug": "sushant/service",
+            "slug": "sushant/service*",
             "name": "My Service Offers",
             "icon": "coffee"
         },
         {
             "url": "sushant/settings",
-            "slug": "sushant/settings",
+            "slug": "sushant/settings*",
             "name": "My Account Settings",
             "icon": "settings"
         },
@@ -75,7 +81,7 @@
         },
         {
             "url": "sushant/frontend",
-            "slug": "sushant/frontend",
+            "slug": "sushant/frontend*",
             "name": "Frontend Info.",
             "icon": "airplay"
         }

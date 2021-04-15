@@ -20,8 +20,11 @@ Route::group(['prefix' => 'sushant', 'as' => 'sushant.', 'middleware' => ['auth:
     //profile Information
     Route::resource('profile', \App\Http\Controllers\ProfileController::class);
 
+    Route::get('myprofile', [\App\Http\Controllers\ProfileController::class, 'myProfile'])->name('myProfile.show');
+    Route::post('myprofile', [\App\Http\Controllers\ProfileController::class, 'myProfileUpdate'])->name('myProfile.update');
+
     //frontend Information
-    Route::resource('frontend', \App\Http\Controllers\FrontendController::class);
+    Route::resource('frontend', \App\Http\Controllers\SEOMetaController::class);
 
     //resume Information
     Route::resource('resume', \App\Http\Controllers\ResumeController::class);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\About;
 
 class ProfileController extends Controller
 {
@@ -15,19 +16,19 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.contents.profile.index', compact('users'));
+        $profile = User::all();
+        return view('admin.contents.profile.index', compact('profile'));
     }
 
-    public function create()
+    public function create(User $profile)
     {
-        return view('admin.contents.profile.create');
+        return view('admin.contents.profile.create', compact('profile'));
     }
 
     public function store(Request $request)
     {
         $user = User::create($request->all());
-        return redirect()->route('sushant.profile.show');
+        return redirect()->route('sushant.profile.index')->with('success', 'New User Added Successfully');;
     }
 
     public function edit(User $profile)
@@ -39,18 +40,31 @@ class ProfileController extends Controller
     {
         $profile->update($request->all());
 
-        return redirect()->route('sushant.profile.index');
+        return redirect()->back()->with('success', 'Profile Information Updated Successfully');
     }
 
-    public function show(User $profile)
+    public function myProfile()
     {
-        return view('admin.contents.profile.show', compact('profile'));
+        $profile = User::where('id', auth()->user()->id)->get();
+        return view('admin.contents.profile.mysettings', compact('profile'));
+    }
+    public function myProfileUpdate(Request $request)
+    {
+        $profile = User::where('id', auth()->user()->id)->get();
+        $profile->update($request->all());
+
+        return redirect()->back()->with('success', 'Profile Updated Successfully');;
     }
 
-    public function destroy(User $user)
+    public function show(User $profile, About $about)
     {
-        $user->delete();
+        return view('admin.contents.profile.show', compact('profile', 'about'));
+    }
 
-        return back();
+    public function destroy(User $profile)
+    {
+        $profile->delete();
+
+        return back()->with('success', 'Profile Deleted Successfully');;
     }
 }

@@ -11,6 +11,7 @@
 {{-- Theme Styles --}}
 <link rel="stylesheet" href="{{ asset('admin-assets/css/core.css') }}" />
 <link rel="stylesheet" href="{{ asset('admin-assets/css/base/core/menu/menu.css') }}" />
+<link rel="stylesheet" href="{{ asset('admin-assets/vendors/css/extensions/toastr.min.css') }}" />
 {{-- Page Styles --}}
 @yield('page-style')
 {{-- Laravel Style --}}
