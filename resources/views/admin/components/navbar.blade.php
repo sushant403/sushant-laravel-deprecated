@@ -49,7 +49,7 @@
         </span class="nav-link h5">
       </li>
     </ul>
-    <ul class="nav navbar-nav align-items-center ml-auto">
+    <ul class="nav navbar-nav align-items-center">
       <li class="nav-item dropdown dropdown-language">
         <a class="nav-link dropdown-toggle" id="dropdown-flag" href="javascript:void(0);" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">

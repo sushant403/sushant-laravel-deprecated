@@ -44,3 +44,22 @@
 </div>
 <!--/ Page layout -->
 @endsection
+
+@section('page-script')
+<link rel="stylesheet" href="{{ asset('admin-assets/css/base/plugins/extensions/ext-component-toastr.css') }}">
+<script type="text/javascript">
+  $(window).on('load', function() {
+      // On load Toast
+setTimeout(function () {
+  toastr['success'](
+    'Happy Working. Have a great time.',
+    'Welcome, {{ Auth::user()->name }}',
+    {
+      closeButton: true,
+      tapToDismiss: false,
+    }
+  );
+}, 300);
+})
+</script>
+@endsection

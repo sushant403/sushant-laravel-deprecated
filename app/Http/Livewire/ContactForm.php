@@ -16,12 +16,13 @@ class ContactForm extends Component
     public $about;
     public $successMessage;
     protected $rules = [
-        'name' => 'required',
+        'name' => 'required|regex:/^[a-zA-Z ]+$/',
         'email' => 'required|email',
         'message' => 'required|min:7',
     ];
     protected $messages = [
         'name.required' => 'What should I call you? Maybe a pet name?',
+        'name.regex' => 'Your name feels weird.. try using an \'earth name\'',
         'email.required' => 'C\'mon! I gotta contact you somewhere, right?.',
         'email.email' => 'Hmm.. seems incorrect! May be you misspelled fullstop? (.)',
         'message.required' => 'Write Something. Maybe a nice quote?',
@@ -43,6 +44,12 @@ class ContactForm extends Component
         $contact->subject = $this->subject;
         $contact->message = $this->message;
         $contact->save();
+        Contact::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'subject' => $this->subject,
+            'message' => $this->message,
+        ]);
 
         $this->resetForm();
         return $this->successMessage = 'Your query has been recorded successfully. You may receive email from our team. Thank You';
@@ -58,8 +65,7 @@ class ContactForm extends Component
 
     public function render()
     {
-	$about = About::whereId(1)->first();
-
+        $about = About::whereId(1)->first();
         return view('livewire.contact-form');
     }
 }

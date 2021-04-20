@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactsController extends Controller
@@ -13,72 +14,42 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::all();
+        return view('admin.contents.contact.index', compact('contacts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Contact $contact)
     {
-        //
+        return view('admin.contents.contact.create', compact('contact'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        Contact::create($request->all());
+        return redirect()->route('sushant.contact.index')->with('success', 'New Contact Added Successfully');;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Contact $contact)
     {
-        //
+        return view('admin.contents.contact.edit', compact('contact'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $request, Contact $contact)
     {
-        //
+        $contact->update($request->all());
+
+        return redirect()->back()->with('success', 'Contact Information Updated Successfully');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function show(Contact $contact)
     {
-        //
+        return view('admin.contents.contact.show', compact('contact', 'about'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return back()->with('success', 'Contact Deleted Successfully');;
     }
 }

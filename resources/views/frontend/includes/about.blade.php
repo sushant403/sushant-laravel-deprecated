@@ -3,7 +3,7 @@
         <div class="row d-flex align-items-center">
 
             <div class="col-12 col-md-6 small-device-space">
-                <div class="dtr-pr-30"> <img src="alpha-assets/images/SushantPoudel-portfolio.jpg" alt="image"> </div>
+                <div class="dtr-pr-30"> <img src="alpha-assets/images/SushantPoudel-Portfolio.png" alt="image"> </div>
             </div>
             <div class="col-12 col-md-6">
 

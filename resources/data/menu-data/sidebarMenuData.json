@@ -52,6 +52,12 @@
             "slug": ""
         },
         {
+            "url": "sushant/about",
+            "slug": "sushant/about*",
+            "name": "About Me",
+            "icon": "bell"
+        },
+        {
             "url": "sushant/resume",
             "slug": "sushant/resume*",
             "name": "My Resumes",
@@ -68,12 +74,6 @@
             "slug": "sushant/service*",
             "name": "My Service Offers",
             "icon": "coffee"
-        },
-        {
-            "url": "sushant/settings",
-            "slug": "sushant/settings*",
-            "name": "My Account Settings",
-            "icon": "settings"
         },
         {
             "navheader": "SEO and Meta Tags",

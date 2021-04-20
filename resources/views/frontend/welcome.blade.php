@@ -5,17 +5,16 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6">
-                <p class="text-size-lg font-weight-300 color-dark">Hello,</p>
-                <p class="text-size-xl font-weight-300 color-dark">I am
+                <p class="text-size-md font-weight-300 color-dark">Hello,</p>
+                <p class="text-size-lg font-weight-300 color-dark">I am
                     <span class="font-weight-500">Sushant</span></p>
                 <div class="spacer-20"></div>
                 <h3 class="dtr-mb-5 color-blue">Full Stack Developer</h3>
+                <h3 class="dtr-mb-5 color-blue opacity-1">Web Designer</h3>
                 <h3><span class="dtr-animated-headline push"> <span class="dtr-words-wrapper">
-                            <b class="is-visible"><span class="color-blue opacity-2">Web Designer</span></b>
-                            <b class="is-hidden"><span class="color-blue opacity-2">Laravel | PHP</span></b>
+                            <b class="is-visible"><span class="color-blue opacity-2">Laravel|PHP</span></b>
                             <b class="is-hidden"><span class="color-blue opacity-2">Database</span></b>
                             <b class="is-hidden"><span class="color-blue opacity-2">Traveller</span></b>
-
                         </span> </span></h3>
             </div>
             <div class="col-6 col-md-2 dtr-rounded-img"> <img src="{{ $about->user->first()->profile_photo_url}}"

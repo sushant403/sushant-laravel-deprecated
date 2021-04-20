@@ -32,8 +32,6 @@
       {{-- Include Breadcrumb --}}
       {{-- @include('admin.components.breadcrumb') --}}
 
-      @include('admin.components.message')
-
       <div class="content-body">
         {{-- Include Page Content --}}
         @yield('content')
@@ -61,46 +59,8 @@
       }
     })
   </script>
-  {{-- Error or Success Messages Toastr --}}
-  @if(session()->has('success'))
-  <link rel="stylesheet" href="{{ asset('admin-assets/css/base/plugins/extensions/ext-component-toastr.css') }}">
-  <script type="text/javascript">
-    $(window).on('load', function() {
-        // On load Toast
-  setTimeout(function () {
-    toastr['success'](
-      '{{session()->get('success')}}',
-      'Notification',
-      {
-        closeButton: true,
-        tapToDismiss: false,
-        progressBar: true,
-      }
-    );
-  }, 1000);
-  })
-  </script>
-  @endif
-  @if(session()->has('error'))
-  <link rel="stylesheet" href="{{ asset('admin-assets/css/base/plugins/extensions/ext-component-toastr.css') }}">
-  <script type="text/javascript">
-    $(window).on('load', function() {
-        // On load Toast
-  setTimeout(function () {
-    toastr['error'](
-      '{{session()->get('error')}}',
-      'Error Occured',
-      {
-        closeButton: true,
-        tapToDismiss: false,
-        progressBar: true,
-      }
-    );
-  }, 500);
-  })
-  </script>
-  @endif
-  {{-- End Error or Success Messages Toastr --}}
+
+  @extends('admin.components.message')
 </body>
 
 </html>
