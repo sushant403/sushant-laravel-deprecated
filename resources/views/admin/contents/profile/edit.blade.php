@@ -117,8 +117,7 @@
                 <div class="form-group">
                   <label for="password">Choose a Password</label>
                   <input type="password" name="password" class="form-control"
-                    value="{{ old('password', $profile->password) }}" placeholder="********" required
-                    placeholder="Password" id="password" />
+                    value="{{ old('password', $profile->password) }}" placeholder="********" required id="password" />
                 </div>
               </div>
 

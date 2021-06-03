@@ -67,7 +67,7 @@
           </div>
           <!-- users edit media object ends -->
           <!-- users edit account form start -->
-          <form action="{{ route("sushant.profile.update", [$profile->id]) }}" method="POST" class="form-validate"
+          <form action="{{ route("sushant.about.update", [$about->id]) }}" method="POST" class="form-validate"
             enctype="multipart/form-data">
             @method('PUT')
             @csrf
@@ -75,22 +75,22 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="username">Username</label>
-                  <input type="text" class="form-control" placeholder="Username"
-                    value="{{ old('name', $profile->name) }}" id="username" />
+                  <input type="text" class="form-control" placeholder="Username" value="{{ old('name', $about->name) }}"
+                    id="username" />
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="name">Name</label>
                   <input type="text" class="form-control" required placeholder="Name"
-                    value="{{ old('name', $profile->name) }}" name="name" id="name" />
+                    value="{{ old('name', $about->name) }}" name="name" id="name" />
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="email">E-mail</label>
                   <input type="email" class="form-control" required placeholder="Email"
-                    value="{{ old('email', $profile->email) }}" name="email" id="email" />
+                    value="{{ old('email', $about->email) }}" name="email" id="email" />
                 </div>
               </div>
               <div class="col-md-4">
@@ -98,8 +98,8 @@
                   <label for="status">Dark Mode Fan?</label>
                   <select class="form-control" name="is_dark_mode" required id="status">
                     <option disabled>Choose Layout Mode</option>
-                    <option value="0" {{ old('is_dark_mode', $profile->is_dark_mode) ? 'selected' : '' }}>Light</option>
-                    <option value="1" {{ old('is_dark_mode', $profile->is_dark_mode) ? 'selected' : '' }}>Dark</option>
+                    <option value="0" {{ old('is_dark_mode', $about->is_dark_mode) ? 'selected' : '' }}>Light</option>
+                    <option value="1" {{ old('is_dark_mode', $about->is_dark_mode) ? 'selected' : '' }}>Dark</option>
                   </select>
                 </div>
               </div>
@@ -117,7 +117,7 @@
                 <div class="form-group">
                   <label for="password">Choose a Password</label>
                   <input type="password" name="password" class="form-control"
-                    value="{{ old('password', $profile->password) }}" placeholder="********" required
+                    value="{{ old('password', $about->password) }}" placeholder="********" required
                     placeholder="Password" id="password" />
                 </div>
               </div>
@@ -137,7 +137,7 @@
         <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
           <!-- users edit Info form start -->
           <form method="POST" class="form-validate" enctype="multipart/form-data"
-            action="{{ route("sushant.profile.update", [$profile->id]) }}">
+            action="{{ route("sushant.about.update", [$about->id]) }}">
             @method('PUT')
             @csrf
             <div class="row mt-1">
@@ -268,7 +268,7 @@
         <div class="tab-pane" id="social" aria-labelledby="social-tab" role="tabpanel">
           <!-- users edit social form start -->
           <form class="form-validate" enctype="multipart/form-data"
-            action="{{ route("sushant.profile.update", [$profile->id]) }}" method="POST">
+            action="{{ route("sushant.about.update", [$about->id]) }}" method="POST">
             @method('PUT')
             @csrf
             <div class="row">

@@ -44,12 +44,6 @@ class ContactForm extends Component
         $contact->subject = $this->subject;
         $contact->message = $this->message;
         $contact->save();
-        Contact::create([
-            'name' => $this->name,
-            'email' => $this->email,
-            'subject' => $this->subject,
-            'message' => $this->message,
-        ]);
 
         $this->resetForm();
         return $this->successMessage = 'Your query has been recorded successfully. You may receive email from our team. Thank You';

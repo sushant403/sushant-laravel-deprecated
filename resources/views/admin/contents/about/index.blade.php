@@ -13,7 +13,7 @@
 <section id="basic-datatable">
     <div class="row">
         <div class="col-12">
-            <a href="{{ route('sushant.profile.create') }}" class="btn btn-primary mb-1">Add New Record</a>
+            <a href="{{ route('sushant.about.create') }}" class="btn btn-primary mb-1">Add New Record</a>
             <div class="card">
                 <table class="datatables-basic table datatable-data">
                     <thead>
@@ -29,22 +29,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($profile as $profile)
-                        <tr data-entry-id="{{ $profile->id }}">
+                        @foreach($about as $about)
+                        <tr data-entry-id="{{ $about->id }}">
                             <td></td>
                             <td></td>
-                            <td>{{ $profile->id ?? '' }}</td>
+                            <td>{{ $about->id ?? '' }}</td>
                             <td>
-                                {{ $profile->name ?? '' }}
+                                {{ $about->name ?? '' }}
                             </td>
                             <td>
-                                {{ $profile->email ?? '' }}
+                                {{ $about->email ?? '' }}
                             </td>
                             <td>
-                                {{ $profile->created_at->diffForHumans() ?? '' }}
+                                {{ $about->created_at->diffForHumans() ?? '' }}
                             </td>
                             <td>
-                                {{ $profile->is_dark_mode ? $profile->is_dark_mode === 1 ? 'Dark' : 'Light' : 'Light' }}
+                                {{ $about->is_dark_mode ? $about->is_dark_mode === 1 ? 'Dark' : 'Light' : 'Light' }}
                             </td>
                             <td>
                                 <div class="d-inline-flex">
@@ -52,13 +52,11 @@
                                         <i data-feather='more-vertical'></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="{{ route('sushant.profile.show', $profile->id) }}"
-                                            class="dropdown-item">
+                                        <a href="{{ route('sushant.about.show', $about->id) }}" class="dropdown-item">
                                             <i data-feather="edit" class="font-small-4 mr-50"></i>
                                             Details</a>
-                                        <form action="{{ route('sushant.profile.destroy', $profile->id) }}"
-                                            method="POST" onsubmit="return confirm('Are you Sure?');"
-                                            style="display: inline-block;">
+                                        <form action="{{ route('sushant.about.destroy', $about->id) }}" method="POST"
+                                            onsubmit="return confirm('Are you Sure?');" style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <button type="submit" class="dropdown-item delete-record">
@@ -67,7 +65,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <a href="{{ route('sushant.profile.edit', $profile->id) }}" class="item-edit">
+                                <a href="{{ route('sushant.about.edit', $about->id) }}" class="item-edit">
                                     <i data-feather='edit'></i>
                                 </a>
                             </td>
@@ -131,7 +129,7 @@
                 details: {
                     display: $.fn.dataTable.Responsive.display.modal({
                         header: function (e) {
-                            return "Details of " + "{{ $profile->name }}";
+                            return "Details of " + "{{ $about->name }}";
                         },
                     }),
                     type: "column",
