@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\SEOMeta;
+use App\Models\Metatags;
 use Illuminate\Database\Seeder;
 
 class SEOMetaSeeder extends Seeder
@@ -14,7 +14,7 @@ class SEOMetaSeeder extends Seeder
      */
     public function run()
     {
-        SEOMeta::create([
+        Metatags::create([
             'meta_url' => 'https://sushantp.com.np',
             'meta_title' => 'Sushant Poudel - Resume | CV | Portfolio',
             'meta_description' => 'Sushant Poudel - Portfolio / Resume. Full Stack Web Developer and Designer since 7+ years.',
