@@ -28,7 +28,7 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         $user = User::create($request->all());
-        return redirect()->route('sushant.profile.index')->with('success', 'New User Added Successfully');;
+        return redirect()->route('sushant.profile.index')->with('success', 'New User Added Successfully');
     }
 
     public function edit(User $profile)
@@ -65,6 +65,6 @@ class ProfileController extends Controller
     {
         $profile->delete();
 
-        return back()->with('success', 'Profile Deleted Successfully');;
+        return back()->with('error', 'Profile Deleted Successfully');;
     }
 }

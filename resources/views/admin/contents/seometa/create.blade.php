@@ -1,6 +1,6 @@
 @extends('admin.layouts.adminMaster')
 
-@section('title', 'User Edit')
+@section('title', 'Create Meta Tags')
 
 @section('vendor-style')
 {{-- Vendor Css files --}}
@@ -24,7 +24,7 @@
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab"
                         href="#account" aria-controls="account" role="tab" aria-selected="true">
-                        <i data-feather="user"></i><span class="d-none d-sm-block">About Details</span>
+                        <i data-feather="user"></i><span class="d-none d-sm-block">Meta Tags Details</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -41,64 +41,52 @@
 
                     <!-- users edit media object ends -->
                     <!-- users edit account form start -->
-                    <form action="{{ route("sushant.about.store") }}" method="POST" class="form-validate"
+                    <form action="{{ route("sushant.seometa.store") }}" method="POST" class="form-validate"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" placeholder="Name"
-                                        value="{{ Auth::user()->name }}" disabled id="name" />
+                                    <label for="meta_title">Meta Title</label>
+                                    <input type="text" class="form-control" name="meta_title" placeholder="Meta Title"
+                                        id="meta_title" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="title_tag">Title Tag</label>
-                                    <input type="title_tag" name="title_tag" class="form-control" placeholder="Designer"
-                                        required id="title_tag" />
+                                    <label for="meta_url">Meta URL</label>
+                                    <input type="text" name="meta_url" class="form-control" placeholder="Meta URL Info."
+                                        required id="meta_url" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="location">Location</label>
-                                    <input type="text" name="location" class="form-control" placeholder="Your City/Town"
-                                        required id="location" />
+                                    <label for="meta_author">Meta Author</label>
+                                    <input type="text" name="meta_author" class="form-control"
+                                        placeholder="Author's Name" required id="meta_author" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="meta_description">Meta Description</label>
+                                    <textarea name="meta_description" class="form-control"
+                                        placeholder="Short Description about the website." required
+                                        id="meta_description"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="meta_keywords">Meta Keywords</label>
+                                    <textarea name="meta_keywords" class="form-control"
+                                        placeholder="portfolio, service, resume, sushantpoudel" required
+                                        id="meta_keywords"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="short_desc">Short Description</label>
-                                    <textarea name="short_desc" class="form-control" placeholder="Short Line about you"
-                                        required id="short_desc"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="long_desc">Long Description</label>
-                                    <textarea name="long_desc" class="form-control"
-                                        placeholder="You may ellobarate a bit." required id="long_desc"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="number" name="phone" class="form-control"
-                                        placeholder="Phone Number (Optional)" id="phone" />
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="birthday">Birthday</label>
-                                    <input type="date" name="birthday" class="form-control" placeholder="1999/09/09"
-                                        required id="birthday" />
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="skill">Skills</label>
-                                    <input type="text" name="skill" class="form-control"
-                                        placeholder="What are you good at?" required id="skill" />
+                                    <label for="meta_image_url">META Image URL</label>
+                                    <input type="text" name="meta_image_url" class="form-control"
+                                        placeholder="URL of the Image" required id="meta_image_url" />
                                 </div>
                             </div>
 
@@ -115,7 +103,7 @@
 
                 <!-- Information Tab starts -->
                 <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
-                    <p>Informations can be added later at the Edit section of the users.</p>
+                    <p>Information (if any) can be added later at the Edit section from the table.</p>
                 </div>
                 <!-- Information Tab ends -->
             </div>

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\About;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\About;
+use Illuminate\Support\Facades\Auth;
 
 class AboutController extends Controller
 {
@@ -27,8 +28,9 @@ class AboutController extends Controller
 
     public function store(Request $request)
     {
+        $request['user_id'] = Auth::user()->id;
         About::create($request->all());
-        return redirect()->route('sushant.about.index');
+        return redirect()->route('sushant.about.index')->with('success', 'About Information Added Successfully');
     }
 
     public function edit(About $about)
@@ -40,7 +42,7 @@ class AboutController extends Controller
     {
         $about->update($request->all());
 
-        return redirect()->back();
+        return redirect()->route('sushant.about.index')->with('success', 'Information Updated Successfully');;
     }
 
     public function show(About $about)
@@ -48,10 +50,10 @@ class AboutController extends Controller
         return view('admin.contents.about.show', compact('about'));
     }
 
-    public function destroy(About $user)
+    public function destroy(About $about)
     {
-        $user->delete();
+        $about->delete();
 
-        return back();
+        return back()->with('success', 'Information Deleted Successfully!');
     }
 }

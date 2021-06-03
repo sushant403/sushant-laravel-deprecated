@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Frontend;
+use App\Models\SEOMeta;
 use Illuminate\Database\Seeder;
 
-class FrontendSeeder extends Seeder
+class SEOMetaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class FrontendSeeder extends Seeder
      */
     public function run()
     {
-        Frontend::create([
+        SEOMeta::create([
             'meta_url' => 'https://sushantp.com.np',
             'meta_title' => 'Sushant Poudel - Resume | CV | Portfolio',
             'meta_description' => 'Sushant Poudel - Portfolio / Resume. Full Stack Web Developer and Designer since 7+ years.',

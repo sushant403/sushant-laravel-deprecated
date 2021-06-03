@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Frontend extends Model
+class Metatags extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public $table = 'frontends';
+    public $table = 'seometa';
 
     protected $guarded = [];
 
@@ -19,9 +19,4 @@ class Frontend extends Model
         'updated_at',
         'deleted_at',
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 }

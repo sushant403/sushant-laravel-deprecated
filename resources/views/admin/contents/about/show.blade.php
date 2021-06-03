@@ -81,8 +81,6 @@
     </div>
     <!-- /User Card Ends-->
 
-    
-    
 </section>
 @endsection
 @section('page-script')

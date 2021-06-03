@@ -1,6 +1,6 @@
 @extends('admin.layouts.adminMaster')
 
-@section('title', 'User Edit')
+@section('title', 'Edit About Details')
 
 @section('vendor-style')
 {{-- Vendor Css files --}}
@@ -69,56 +69,63 @@
           <!-- users edit account form start -->
           <form action="{{ route("sushant.about.update", [$about->id]) }}" method="POST" class="form-validate"
             enctype="multipart/form-data">
-            @method('PUT')
             @csrf
+            @method('PUT')
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="username">Username</label>
-                  <input type="text" class="form-control" placeholder="Username" value="{{ old('name', $about->name) }}"
-                    id="username" />
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" required placeholder="Name"
-                    value="{{ old('name', $about->name) }}" name="name" id="name" />
+                  <input type="text" class="form-control" placeholder="Name" value="{{ Auth::user()->name }}" disabled
+                    id="name" />
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="email">E-mail</label>
-                  <input type="email" class="form-control" required placeholder="Email"
-                    value="{{ old('email', $about->email) }}" name="email" id="email" />
+                  <label for="title_tag">Title Tag</label>
+                  <input type="title_tag" value="{{ old('title_tag', $about->title_tag) }}" name="title_tag"
+                    class="form-control" placeholder="Designer" required id="title_tag" />
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="status">Dark Mode Fan?</label>
-                  <select class="form-control" name="is_dark_mode" required id="status">
-                    <option disabled>Choose Layout Mode</option>
-                    <option value="0" {{ old('is_dark_mode', $about->is_dark_mode) ? 'selected' : '' }}>Light</option>
-                    <option value="1" {{ old('is_dark_mode', $about->is_dark_mode) ? 'selected' : '' }}>Dark</option>
-                  </select>
+                  <label for="location">Location</label>
+                  <input type="text" value="{{ old('location', $about->location) }}" name="location"
+                    class="form-control" placeholder="Your City/Town" required id="location" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="short_desc">Short Description</label>
+                  <textarea rows="7" name="short_desc" class="form-control" placeholder="Short Line about you" required
+                    id="short_desc">{{ old('short_desc', $about->short_desc) }}</textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="long_desc">Long Description</label>
+                  <textarea rows="7" name="long_desc" class="form-control" placeholder="You may ellobarate a bit."
+                    required id="long_desc">{{ old('long_desc', $about->long_desc) }}</textarea>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="role">Role</label>
-                  <select class="form-control" id="role">
-                    <option>Admin</option>
-                    <option>User</option>
-                    <option>Staff</option>
-                  </select>
+                  <label for="phone">Phone Number</label>
+                  <input type="text" value="{{ old('phone', $about->phone) }}" name="phone" class="form-control"
+                    placeholder="Phone Number (Optional)" id="phone" />
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="password">Choose a Password</label>
-                  <input type="password" name="password" class="form-control"
-                    value="{{ old('password', $about->password) }}" placeholder="********" required
-                    placeholder="Password" id="password" />
+                  <label for="birthday">Birthday</label>
+                  <input type="date" value="{{ old('birthday', $about->birthday) }}" name="birthday"
+                    class="form-control" placeholder="1999/09/09" required id="birthday" />
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="skill">Skills</label>
+                  <input type="text" value="{{ old('skill', $about->skill) }}" name="skill" class="form-control"
+                    placeholder="What are you good at?" required id="skill" />
                 </div>
               </div>
 

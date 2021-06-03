@@ -9,12 +9,13 @@ use App\Models\Service;
 use App\Models\Frontend;
 use App\Models\Portfolio;
 use App\Http\Requests\StoreContactRequest;
+use App\Models\Metatags;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        $frontend = Frontend::whereId(1)->first();
+        $frontend = Metatags::whereId(1)->first();
         $about = About::whereId(1)->first();
         $resume = Resume::where('user_id', 1)->get();
         $portfolio = Portfolio::where('user_id', 1)->get();
@@ -24,13 +25,13 @@ class FrontendController extends Controller
 
     public function showPortfolio(Portfolio $portfolio)
     {
-        $frontend = Frontend::whereId(1)->first();
+        $frontend = Metatags::whereId(1)->first();
         return view('frontend.portfolio-details', compact('frontend'));
     }
 
     public function contact()
     {
-        $frontend = Frontend::whereId(1)->first();
+        $frontend = Metatags::whereId(1)->first();
         return view('frontend.contact', compact('frontend'));
     }
     public function contactStore(StoreContactRequest $request)

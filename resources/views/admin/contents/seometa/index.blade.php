@@ -1,6 +1,6 @@
 @extends('admin.layouts.adminMaster')
 
-@section('title', 'User List')
+@section('title', 'SEO Meta Tags')
 
 @section('page-style')
 {{-- Page Css files --}}
@@ -13,7 +13,7 @@
 <section id="basic-datatable">
     <div class="row">
         <div class="col-12">
-            <a href="{{ route('sushant.about.create') }}" class="btn btn-primary mb-1">Add New Record</a>
+            <a href="{{ route('sushant.seometa.create') }}" class="btn btn-primary mb-1">Add New Record</a>
             <div class="card">
                 <table class="datatables-basic table datatable-data">
                     <thead>
@@ -22,38 +22,34 @@
                             <th></th>
                             <th>Id</th>
                             <th>Action</th>
-                            <th>Title</th>
-                            <th>Short Desc</th>
-                            <th>Long Desc</th>
-                            <th>Location</th>
-                            <th>Phone</th>
-                            <th>Birthday</th>
-                            <th>Skills</th>
-                            <th>Github</th>
-                            <th>Instagram</th>
-                            <th>Twitter</th>
-                            <th>LinkedIn</th>
-                            <th>Freelance URL</th>
-                            <th>Resume Link</th>
+                            <th>Meta Title</th>
+                            <th>Meta URL</th>
+                            <th>Meta Description</th>
+                            <th>Meta Keywords</th>
+                            <th>Meta Author</th>
+                            <th>Meta Image URL</th>
+                            <th>Added</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($about as $about)
-                        <tr data-entry-id="{{ $about->id }}">
+                        @foreach($seometa as $seometa)
+                        <tr data-entry-id="{{ $seometa->id }}">
                             <td></td>
                             <td></td>
-                            <td>{{ $about->id ?? '' }}</td>
+                            <td>{{ $seometa->id ?? '' }}</td>
                             <td>
                                 <div class="d-inline-flex">
                                     <a class="pr-1 dropdown-toggle hide-arrow text-primary" data-toggle="dropdown">
                                         <i data-feather='more-vertical'></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a href="{{ route('sushant.about.show', $about->id) }}" class="dropdown-item">
+                                        <a href="{{ route('sushant.seometa.show', $seometa->id) }}"
+                                            class="dropdown-item">
                                             <i data-feather="edit" class="font-small-4 mr-50"></i>
                                             Details</a>
-                                        <form action="{{ route('sushant.about.destroy', $about->id) }}" method="POST"
-                                            onsubmit="return confirm('Are you Sure?');" style="display: inline-block;">
+                                        <form action="{{ route('sushant.seometa.destroy', $seometa->id) }}"
+                                            method="POST" onsubmit="return confirm('Are you Sure?');"
+                                            style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <button type="submit" class="dropdown-item delete-record">
@@ -62,23 +58,17 @@
                                         </form>
                                     </div>
                                 </div>
-                                <a href="{{ route('sushant.about.edit', $about->id) }}" class="item-edit">
+                                <a href="{{ route('sushant.seometa.edit', $seometa->id) }}" class="item-edit">
                                     <i data-feather='edit'></i>
                                 </a>
                             </td>
-                            <td>{{ $about->title_tag ?? '' }}</td>
-                            <td>{{ Str::limit($about->short_desc ?? '', 40) }}</td>
-                            <td>{{ Str::limit($about->long_desc ?? '', 50) }}</td>
-                            <td>{{ $about->location ?? '' }}</td>
-                            <td>{{ $about->phone ?? '' }}</td>
-                            <td>{{ $about->birthday ?? '' }}</td>
-                            <td>{{ $about->skill ?? '' }}</td>
-                            <td><a target="_blank" href="{{ $about->github_url ?? '' }}">Github URL</a></td>
-                            <td><a target="_blank" href="{{ $about->instagram_url ?? '' }}">Instagram URL</a></td>
-                            <td><a target="_blank" href="{{ $about->twitter_url ?? '' }}"> Twitter URL</a></td>
-                            <td><a target="_blank" href="{{ $about->linkedin_url ?? '' }}">LinkedIn URL</a></td>
-                            <td><a target="_blank" href="{{ $about->freelance_url ?? '' }}">Freelance URL</a></td>
-                            <td><a target="_blank" href="{{ $about->resume_url ?? '' }}">Resume URL</a></td>
+                            <td>{{ $seometa->meta_title ?? '' }}</td>
+                            <td>{{ $seometa->meta_url ?? '' }}</td>
+                            <td>{{ Str::limit($seometa->meta_description ?? '', 50) }}</td>
+                            <td>{{ Str::limit($seometa->meta_keywords ?? '', 50) }}</td>
+                            <td>{{ $seometa->meta_author ?? '' }}</td>
+                            <td><a target="_blank" href="{{ $seometa->meta_image_url ?? '' }}">Meta Image URL</a></td>
+                            <td>{{ $seometa->created_at->diffforhumans() ?? '' }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -139,7 +129,7 @@
                 details: {
                     display: $.fn.dataTable.Responsive.display.modal({
                         header: function (e) {
-                            return "Details of " + "{{ $about->name }}";
+                            return "Details of " + "{{ $seometa->title }}";
                         },
                     }),
                     type: "column",

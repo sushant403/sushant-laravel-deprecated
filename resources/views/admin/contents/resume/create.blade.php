@@ -1,6 +1,6 @@
 @extends('admin.layouts.adminMaster')
 
-@section('title', 'User Edit')
+@section('title', 'Create Resume')
 
 @section('vendor-style')
 {{-- Vendor Css files --}}
@@ -24,7 +24,7 @@
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab"
                         href="#account" aria-controls="account" role="tab" aria-selected="true">
-                        <i data-feather="user"></i><span class="d-none d-sm-block">About Details</span>
+                        <i data-feather="user"></i><span class="d-none d-sm-block">Resume Details</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -41,39 +41,40 @@
 
                     <!-- users edit media object ends -->
                     <!-- users edit account form start -->
-                    <form action="{{ route("sushant.about.store") }}" method="POST" class="form-validate"
+                    <form action="{{ route("sushant.resume.store") }}" method="POST" class="form-validate"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
+                                    <label for="name">Name and User ID</label>
                                     <input type="text" class="form-control" placeholder="Name"
-                                        value="{{ Auth::user()->name }}" disabled id="name" />
+                                        value="{{ Auth::user()->name }} | {{ Auth::user()->id }}" disabled id="name" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="title_tag">Title Tag</label>
-                                    <input type="title_tag" name="title_tag" class="form-control" placeholder="Designer"
-                                        required id="title_tag" />
+                                    <label for="title">Title Tag</label>
+                                    <input type="title" name="title" class="form-control"
+                                        placeholder="Laravel Developer" required id="title" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="location">Location</label>
-                                    <input type="text" name="location" class="form-control" placeholder="Your City/Town"
-                                        required id="location" />
+                                    <label for="company">Name of the Company</label>
+                                    <input type="text" name="company" class="form-control" placeholder="Company's Name"
+                                        required id="company" />
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="short_desc">Short Description</label>
-                                    <textarea name="short_desc" class="form-control" placeholder="Short Line about you"
-                                        required id="short_desc"></textarea>
+                                    <textarea name="short_desc" class="form-control"
+                                        placeholder="Short Description about the job." required
+                                        id="short_desc"></textarea>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="long_desc">Long Description</label>
                                     <textarea name="long_desc" class="form-control"
@@ -82,23 +83,16 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="phone">Phone Number</label>
-                                    <input type="number" name="phone" class="form-control"
-                                        placeholder="Phone Number (Optional)" id="phone" />
+                                    <label for="date_from">Date (From)</label>
+                                    <input type="text" name="date_from" class="form-control" placeholder="May 2020"
+                                        required id="date_from" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="birthday">Birthday</label>
-                                    <input type="date" name="birthday" class="form-control" placeholder="1999/09/09"
-                                        required id="birthday" />
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="skill">Skills</label>
-                                    <input type="text" name="skill" class="form-control"
-                                        placeholder="What are you good at?" required id="skill" />
+                                    <label for="date_to">Date (To)</label>
+                                    <input type="text" name="date_to" class="form-control" placeholder="August 2020"
+                                        required id="date_to" />
                                 </div>
                             </div>
 
@@ -115,7 +109,7 @@
 
                 <!-- Information Tab starts -->
                 <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
-                    <p>Informations can be added later at the Edit section of the users.</p>
+                    <p>Information (if any) can be added later at the Edit section from the table.</p>
                 </div>
                 <!-- Information Tab ends -->
             </div>

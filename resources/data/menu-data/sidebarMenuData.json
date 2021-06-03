@@ -80,9 +80,9 @@
             "slug": ""
         },
         {
-            "url": "sushant/frontend",
-            "slug": "sushant/frontend*",
-            "name": "Frontend Info.",
+            "url": "sushant/seometa",
+            "slug": "sushant/seometa*",
+            "name": "SEO and Meta Tags.",
             "icon": "airplay"
         }
     ]

@@ -22,7 +22,7 @@ Route::group(['prefix' => 'sushant', 'as' => 'sushant.', 'middleware' => ['auth:
     Route::get('myprofile', [\App\Http\Controllers\ProfileController::class, 'myProfile'])->name('myProfile.show');
     Route::post('myprofile', [\App\Http\Controllers\ProfileController::class, 'myProfileUpdate'])->name('myProfile.update');
 
-    Route::resource('seometa', \App\Http\Controllers\SEOMetaController::class);
+    Route::resource('seometa', \App\Http\Controllers\MetatagsController::class);
 
     Route::resource('about', \App\Http\Controllers\AboutController::class);
 
