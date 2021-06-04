@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class ServicesController extends Controller
 {
@@ -13,72 +17,71 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        //
+        $service = Service::all();
+        return view('admin.contents.service.index', compact('service'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function create(Service $service)
     {
-        //
+        return view('admin.contents.service.create', compact('service'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request['user_id'] = Auth::user()->id;
+        $service = Service::create($request->all());
+
+        if ($request->hasFile('photo')) {
+            $image = $request->file('photo')->getClientOriginalName();
+            $request->file('photo')
+                ->storeAs('public/service/' . $service->id, $image);
+            $service->update(['photo' => $image]);
+
+            $file = Image::make(storage_path('app/public/service/' . $service->id . '/' . $image));
+            $file->resize(600, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $file->save(storage_path('app/public/service/' . $service->id . '/thumbnail_' . $image));
+        }
+
+        return redirect()->route('sushant.service.index')->with('success', 'Service Added Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function edit(Service $service)
     {
-        //
+        return view('admin.contents.service.edit', compact('service'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $request, Service $service)
     {
-        //
+        $service->update($request->all());
+
+        if ($request->hasFile('photo')) {
+            $image = $request->file('photo')->getClientOriginalName();
+            $request->file('photo')
+                ->storeAs('public/service/' . $service->id, $image);
+
+            $service->update(['photo' => $image]);
+
+            $file = Image::make(storage_path('app/public/service/' . $service->id . '/' . $image));
+            $file->resize(600, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $file->save(storage_path('app/public/service/' . $service->id . '/thumbnail_' . $image));
+        }
+
+        return redirect()->route('sushant.service.index')->with('success', 'Service Updated Successfully');;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function show(Service $service)
     {
-        //
+        return view('admin.contents.service.show', compact('service'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Service $service)
     {
-        //
+        $service->delete();
+
+        return back()->with('success', 'Information Deleted Successfully!');
     }
 }

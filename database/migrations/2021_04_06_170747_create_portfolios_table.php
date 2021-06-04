@@ -21,6 +21,7 @@ class CreatePortfoliosTable extends Migration
             $table->string('short_desc')->nullable();
             $table->longText('long_desc')->nullable();
             $table->string('portfolio_url')->nullable();
+            $table->text('photo')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

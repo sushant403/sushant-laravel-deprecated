@@ -14,10 +14,12 @@
             @foreach($portfolio as $myportfolio)
             <div class="dtr-portfolio-item isotope-item filter-{{ $myportfolio->type }} all">
                 <div class="dtr-portfolio-content dual-icons">
-                    <img src="alpha-assets/images/photography_img8.jpg" alt="{{ $myportfolio->title }}">
+                    <img src="{{ asset('storage/portfolio/' . $myportfolio->id . '/thumbnail_' . $myportfolio->photo) }}"
+                        alt="{{ $myportfolio->title }}">
                     <div class="dtr-portfolio-overlay">
                         <a class="media-link" href="{{ $myportfolio->portfolio_url }}" target="_blank"></a>
-                        <a class="media-zoom popup-gallery" href="alpha-assets/images/photography_img8.jpg"></a>
+                        <a class="media-zoom popup-gallery"
+                            href="{{ asset('storage/portfolio/' . $myportfolio->id . '/thumbnail_' . $myportfolio->photo) }}"></a>
                     </div>
                 </div>
             </div>
