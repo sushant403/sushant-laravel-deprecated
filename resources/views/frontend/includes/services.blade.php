@@ -24,9 +24,14 @@
                         id="services-tab-{{ $loop->iteration }}" role="tabpanel"
                         aria-labelledby="services-tab-{{ $loop->iteration }}-tab">
                         <div class="row">
-                            <div class="col-12 col-md-5 small-device-space"> <img
-                                    src="{{ asset('storage/service/' . $myservices->id . '/thumbnail_' . $myservices->photo) }}"
-                                    alt="image"> </div>
+                            <div class="col-12 col-md-5 small-device-space">
+                                @if($myservices->photo)
+                                <img src="{{ asset('storage/service/' . $myservices->id . '/thumbnail_' . $myservices->photo) }}"
+                                    alt="image">
+                                @else
+                                <img src="{{ asset('alpha-assets/images/myservices.jpg') }}" alt="image">
+                                @endif
+                            </div>
                             <div class="col-12 col-md-7">
                                 <h6>{{ $myservices->short_desc }}</h6>
                                 <p>{{ $myservices->long_desc }}</p>

@@ -3,7 +3,8 @@
         <div class="row d-flex align-items-center">
 
             <div class="col-12 col-md-6 small-device-space">
-                <div class="dtr-pr-30"> <img src="alpha-assets/images/SushantPoudel-Portfolio.png" alt="image"> </div>
+                <div class="dtr-pr-30"> <img src="{{ asset('alpha-assets/images/SushantPoudel-Portfolio-nbg.png') }}"
+                        alt="image"> </div>
             </div>
             <div class="col-12 col-md-6">
 
@@ -59,20 +60,21 @@
 
         <div class="dtr-styled-heading heading-left dtr-mt-100">
             <h2>My Skills</h2>
-            <p>Subheading or information goes here</p>
+            <p>My magic work with these bad boys.</p>
         </div>
         <div class="row">
             <div class="col-12 col-sm-6 col-lg-4">
-                <p class="d-flex justify-content-between"><span class="dtr-progress-title"><i
-                            class="icon-bxl-nodejs"></i>Node JS</span><span class="dtr-progress-value"></span></p>
+                <p class="d-flex justify-content-between"><span class="dtr-progress-title">
+                        <i class="icon-bxl-wordpress"></i>PHP Frameworks</span><span class="dtr-progress-value"></span>
+                </p>
                 <div class="dtr-progress progress">
                     <div class="progress-bar bg-dark wow fadeInLeft" role="progressbar" style="width: 90%;"
                         aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-4 offset-lg-2">
-                <p class="d-flex justify-content-between"><span class="dtr-progress-title"><i
-                            class="icon-bxl-angular"></i>Angular</span><span class="dtr-progress-value"></span></p>
+                <p class="d-flex justify-content-between"><span class="dtr-progress-title">
+                        <i class="icon-bxl-vuejs"></i>VueJS</span><span class="dtr-progress-value"></span></p>
                 <div class="dtr-progress progress">
                     <div class="progress-bar bg-dark wow fadeInLeft" role="progressbar" style="width: 93%;"
                         aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"></div>
@@ -82,8 +84,9 @@
         </div>
         <div class="row">
             <div class="col-12 col-sm-6 col-lg-4 offset-lg-2">
-                <p class="d-flex justify-content-between"><span class="dtr-progress-title">Management</span><span
-                        class="dtr-progress-value"></span></p>
+                <p class="d-flex justify-content-between"><span class="dtr-progress-title">
+                        <i class="icon-bxl-git"></i>Project Management</span><span class="dtr-progress-value"></span>
+                </p>
                 <div class="dtr-progress progress">
                     <div class="progress-bar bg-dark wow fadeInLeft" role="progressbar" style="width: 82%;"
                         aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
@@ -91,8 +94,8 @@
 
             </div>
             <div class="col-12 col-sm-6 col-lg-4 offset-lg-2">
-                <p class="d-flex justify-content-between"><span class="dtr-progress-title">Analytics</span><span
-                        class="dtr-progress-value"></span></p>
+                <p class="d-flex justify-content-between"><span class="dtr-progress-title">
+                        <i class="icon-people"></i>Digital Marketing</span><span class="dtr-progress-value"></span></p>
                 <div class="dtr-progress progress">
                     <div class="progress-bar bg-dark wow fadeInLeft" role="progressbar" style="width: 96%;"
                         aria-valuenow="96" aria-valuemin="0" aria-valuemax="100"></div>
@@ -101,16 +104,17 @@
         </div>
         <div class="row">
             <div class="col-12 col-sm-6 col-lg-4">
-                <p class="d-flex justify-content-between"><span class="dtr-progress-title"><i
-                            class="icon-bxl-adobe"></i>Adobe Suite</span><span class="dtr-progress-value"></span></p>
+                <p class="d-flex justify-content-between"><span class="dtr-progress-title">
+                        <i class="icon-bxl-figma"></i>UI/UX Design</span><span class="dtr-progress-value"></span></p>
                 <div class="dtr-progress progress">
                     <div class="progress-bar bg-dark wow fadeInLeft" role="progressbar" style="width: 75%;"
                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-4 offset-lg-2">
-                <p class="d-flex justify-content-between"><span class="dtr-progress-title"><i
-                            class="icon-bxl-react"></i>React</span><span class="dtr-progress-value"></span></p>
+                <p class="d-flex justify-content-between"><span class="dtr-progress-title">
+                        <i class="icon-bxl-javascript"></i>HTML/CSS/JavaScript</span><span
+                        class="dtr-progress-value"></span></p>
                 <div class="dtr-progress progress">
                     <div class="progress-bar bg-dark wow fadeInLeft" role="progressbar" style="width: 82%;"
                         aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"></div>
