@@ -84,6 +84,12 @@
             "slug": "sushant/seometa*",
             "name": "SEO and Meta Tags.",
             "icon": "airplay"
+        },
+        {
+            "url": "cache/clear",
+            "slug": "cache/clear*",
+            "name": "Clear Cache.",
+            "icon": "cloud-lightning"
         }
     ]
 }

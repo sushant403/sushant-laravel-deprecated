@@ -48,6 +48,7 @@
                                 <li> <a class="nav-link" href="{{ !request()->is('/') ? '/services' : '#services' }}">Services</a> </li>
                                 <li> <a class="nav-link" href="{{ !request()->is('/') ? '/#portfolio' : '#portfolio' }}">Works</a> </li>
                                 <li> <a class="nav-link" href="{{ !request()->is('/') ? '/#contact' : '#contact' }}">Contact</a> </li>
+                                <li> <a class="nav-link" href="https://oldsite.sushantp.com.np">Old Site</a> </li>
                             </ul>
                         </div>
                     </div>

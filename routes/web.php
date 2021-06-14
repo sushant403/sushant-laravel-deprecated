@@ -34,3 +34,12 @@ Route::group(['prefix' => 'sushant', 'as' => 'sushant.', 'middleware' => ['auth:
 
     Route::resource('service', \App\Http\Controllers\ServicesController::class);
 });
+
+Route::get('/cache/clear', function () {
+            Artisan::call('cache:clear');
+            Artisan::call('config:clear');
+            Artisan::call('route:clear');
+            Artisan::call('view:clear');
+            Artisan::call('optimize:clear');
+            return redirect()->back()->with('success', 'System Cache Cleared.');
+        })->name('cache-clear');
